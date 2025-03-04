@@ -27,7 +27,7 @@ async function ExcluirFavorito(req, res) {
 async function Cardapio(req, res) {
     try {
         const id_usuario = req.id_usuario;
-        const produtos = await serviceEmpresa.Cardapio(id_usuario, 1);
+        const produtos = await serviceEmpresa.Cardapio(id_usuario);
 
         res.status(200).json(produtos);
     } catch (error) {
@@ -46,4 +46,4 @@ async function ListarProdutoId(req, res) {
     }
 }
 
-export default { Destaques, Listar, InserirFavorito, ExcluirFavorito, Cardapio, ListarProdutoId };
+export default { InserirFavorito, ExcluirFavorito, Cardapio, ListarProdutoId };

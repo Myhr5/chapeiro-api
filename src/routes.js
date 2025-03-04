@@ -1,6 +1,4 @@
 import { Router } from "express";
-import controllerCategoria from "./controllers/controller.categoria.js";
-import controllerBanner from "./controllers/controller.banner.js";
 import controllerEmpresa from "./controllers/controller.empresa.js";
 import controllerPedido from "./controllers/controller.pedido.js";
 import controllerUsuario from "./controllers/controller.usuario.js";
