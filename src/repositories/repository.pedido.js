@@ -42,7 +42,7 @@ async function Inserir(id_usuario, dados) {
         vl_taxa_entrega, vl_total, dt_pedido, status) values(?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'P')
         returning id_pedido`;
 
-    const pedido = await execute(sql, [id_usuario, dados.id_empresa, dados.vl_subtotal,
+    const pedido = await execute(sql, [id_usuario, 1, dados.vl_subtotal,
         dados.vl_taxa_entrega, dados.vl_total]);
 
     const id_pedido = pedido[0].id_pedido;
