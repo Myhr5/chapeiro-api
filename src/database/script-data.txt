@@ -1,0 +1,59 @@
+
+insert into empresa (nome, foto, icone, vl_taxa_entrega, endereco, complemento, bairro, cidade, uf, cep) 
+values ('Chapeiro Burguer', '../chapeiro-mobile/src/assets/icons/logo.png', '../chapeiro-mobile/src/assets/icons/logo.png', 3, 'Av. Contorno Leste, 545', ' ', 'Nova Metrópole', 'Caucaia', 'CE', '61658-040');
+
+
+
+
+insert into produto_categoria (id_empresa, categoria, ordem) 
+values (1, 'Burguers', 1);
+
+insert into produto_categoria (id_empresa, categoria, ordem) 
+values (1, 'Combo', 2);
+
+insert into produto_categoria (id_empresa, categoria, ordem) 
+values (1, 'Promo', 3);
+
+insert into produto_categoria (id_empresa, categoria, ordem) 
+values (1, 'Entradas', 4);
+
+insert into produto_categoria (id_empresa, categoria, ordem) 
+values (1, 'Bebidas', 5);
+
+
+
+
+insert into produto (id_empresa, id_categoria, nome, descricao, icone, vl_produto, ind_ativo) 
+values (1, 1, 'Árabe Filé', 'Filé Suíno defumado, queijo mussarela, bacon, alface, tomate, cebola da casa e dois molhos da sua escolha no pão ÁRABE.', '../chapeiro-mobile/src/assets/images/burguer/arabe-file.png', 26.00, 'S');
+
+insert into produto (id_empresa, id_categoria, nome, descricao, icone, vl_produto, ind_ativo) 
+values (2, 1, 'Black Dog Cheddar Bacon', '2 Salsichas hot dog, Cheddar, Bacon, Curry e Oregano', 'https://static-images.ifood.com.br/image/upload/t_medium/pratos/cd1b9efa-c98d-4d0f-8c1a-0595beac2594/202108111938_3QAO_i.jpg', 22.9, 'S');
+
+insert into produto (id_empresa, id_categoria, nome, descricao, icone, vl_produto, ind_ativo) 
+values (2, 1, 'Black Hot Dog Vinagrete', '2 Salsichas Hot Dog, Purê Vinagrete, Curry e Bacon', 'https://static-images.ifood.com.br/image/upload/t_medium/pratos/cd1b9efa-c98d-4d0f-8c1a-0595beac2594/202108111948_4R48_i.jpg', 30, 'S');
+
+insert into produto (id_empresa, id_categoria, nome, descricao, icone, vl_produto, ind_ativo) 
+values (2, 1, 'Black Hot Dog Vinagrete', '2 Salsichas Hot Dog, Purê Vinagrete, Curry e Bacon', 'https://static-images.ifood.com.br/image/upload/t_medium/pratos/cd1b9efa-c98d-4d0f-8c1a-0595beac2594/202108111948_4R48_i.jpg', 19.90, 'S');
+
+insert into produto (id_empresa, id_categoria, nome, descricao, icone, vl_produto, ind_ativo) 
+values (2, 2, 'Coca-Cola Lata', 'Coca-cola lata 330ml trincando de gelada', 'https://static.ifood-static.com.br/image/upload/t_low/pratos/820af392-002c-47b1-bfae-d7ef31743c7f/202210200237_btcjxya1zoh.jpg', 8, 'S');
+
+
+insert into produto (id_empresa, id_categoria, nome, descricao, icone, vl_produto, ind_ativo) 
+values (1, 3, 'McOferta Big mac', 'Dois hambúrgueres, alface, queijo e molho especial, cebola e picles num pão com gergelim, acompanhamento e bebida', 'https://static-images.ifood.com.br/image/upload/t_medium/pratos/2b988c51-d3c3-4a8d-b39d-2f35153a6a0c/202108180417_xddjha30j6g.png', 49, 'S');
+
+insert into produto (id_empresa, id_categoria, nome, descricao, icone, vl_produto, ind_ativo) 
+values (11, 4, 'Pizza Quatro Queijos', 'Tradicional pizza de Catupiry, Mussarela, Provolone e Gorgonzola', 'https://static-images.ifood.com.br/image/upload/t_medium/pratos/ecfe7e9b-bdcc-4bdb-b919-833ad0c63675/201910251911_18jQ_f.jpg', 45, 'S');
+
+
+
+
+
+
+
+
+
+
+
+
+
