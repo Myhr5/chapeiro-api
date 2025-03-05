@@ -34,6 +34,19 @@ async function Cardapio(req, res) {
     }
 }
 
+async function Buscar(req, res) {
+    try {
+        const id_usuario = req.id_usuario;
+        const busca = req.query.busca;
+        const id_categoria = req.query.id_categoria;
+        const produtos = await serviceEmpresa.Buscar(id_usuario, busca, id_categoria);
+
+        res.status(200).json(produtos);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
 async function ListarProdutoId(req, res) {
     try {
         const id_produto = req.params.id_produto;
@@ -45,4 +58,4 @@ async function ListarProdutoId(req, res) {
     }
 }
 
-export default { InserirFavorito, ExcluirFavorito, Cardapio, ListarProdutoId };
+export default { InserirFavorito, ExcluirFavorito, Cardapio, Buscar, ListarProdutoId };

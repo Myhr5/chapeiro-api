@@ -24,12 +24,36 @@ async function ExcluirFavorito(id_usuario, id_produto) {
 
 async function Cardapio() {
 
-    sql = `select *
-     from produto
-     where id_empresa = ?`;
+    sql = `select * from produto order by id_produto`;
 
-    const produtos = await execute(sql, );
+    const produtos = await execute(sql, []);
     console.log(produtos)
+
+    return produtos;
+}
+
+async function Buscar(id_usuario, busca, id_categoria) {
+
+    let filtro = [id_usuario];
+
+    let sql = `select case when u.id_favorito is null then 'N' else 'S' end as favorito, e.*
+    from  produto e
+    left join usuario_favorito u on (u.id_produto = e.id_produto and u.id_usuario = ?)
+    where e.id_produto > 0 `;
+
+    if (busca) {
+        filtro.push('%' + busca + '%');
+        sql = sql + " and e.nome like ? ";
+    }
+
+    if (id_categoria) {
+        filtro.push(id_categoria);
+        sql = sql + " and e.id_categoria = ? ";
+    }
+
+    sql = sql + " order by e.nome";
+
+    const produtos = await execute(sql, filtro);
 
     return produtos;
 }
@@ -45,4 +69,4 @@ async function ListarProdutoId(id_produto) {
     return produto[0];
 }
 
-export default { InserirFavorito, ExcluirFavorito, Cardapio, ListarProdutoId };
+export default { InserirFavorito, ExcluirFavorito, Cardapio, Buscar, ListarProdutoId };

@@ -22,6 +22,13 @@ async function Cardapio() {
     return produtos;
 }
 
+async function Buscar(id_usuario, busca, id_categoria) {
+
+    const produtos = await repositoryEmpresa.Buscar(id_usuario, busca, id_categoria);
+
+    return produtos;
+}
+
 async function ListarProdutoId(id_produto) {
 
     const produto = await repositoryEmpresa.ListarProdutoId(id_produto);
@@ -29,4 +36,4 @@ async function ListarProdutoId(id_produto) {
     return produto;
 }
 
-export default { InserirFavorito, ExcluirFavorito, Cardapio, ListarProdutoId };
+export default { InserirFavorito, ExcluirFavorito, Cardapio, Buscar, ListarProdutoId };

@@ -6,12 +6,12 @@ import jwt from "./token.js";
 
 const router = Router();
 
-router.get("/categorias", jwt.ValidateJWT, controllerCategoria.Listar);
-
 // Empresas
 router.post("/empresas/:id_usuario/:id_produto/favoritos", jwt.ValidateJWT, controllerEmpresa.InserirFavorito);
 router.delete("/empresas/:id_usuario/:id_produto/favoritos", jwt.ValidateJWT, controllerEmpresa.ExcluirFavorito);
+router.get("/categorias", jwt.ValidateJWT, controllerCategoria.Listar);
 router.get("/empresas/cardapio", jwt.ValidateJWT, controllerEmpresa.Cardapio);
+router.get("/empresas/:id_usuario", jwt.ValidateJWT, controllerEmpresa.Buscar);
 router.get("/empresas/produtos/:id_produto", jwt.ValidateJWT, controllerEmpresa.ListarProdutoId);
 
 
