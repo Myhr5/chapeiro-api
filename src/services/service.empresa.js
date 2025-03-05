@@ -2,14 +2,14 @@ import repositoryEmpresa from "../repositories/repository.empresa.js";
 
 async function InserirFavorito(id_usuario, id_produto) {
 
-    const produtos = await repositoryproduto.InserirFavorito(id_usuario, id_produto);
+    const produtos = await repositoryEmpresa.InserirFavorito(id_usuario, id_produto);
 
     return produtos;
 }
 
 async function ExcluirFavorito(id_usuario, id_produto) {
 
-    const produtos = await repositoryproduto.ExcluirFavorito(id_usuario, id_produto);
+    const produtos = await repositoryEmpresa.ExcluirFavorito(id_usuario, id_produto);
 
     return produtos;
 }
@@ -17,7 +17,6 @@ async function ExcluirFavorito(id_usuario, id_produto) {
 async function Cardapio() {
 
     const produtos = await repositoryEmpresa.Cardapio();
-    console.log(produtos)
 
     return produtos;
 }

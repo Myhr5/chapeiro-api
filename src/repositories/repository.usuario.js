@@ -2,7 +2,7 @@ import { execute } from "../database/sqlite.js";
 
 async function Favoritos(id_usuario) {
 
-    const sql = `select f.*, e.icone, e.nome, e.endereco, e.complemento, e.bairro, e.cidade, e.uf
+    const sql = `select f.*, e.icone, e.nome, e.descricao, e.vl_produto
     from usuario_favorito f
     join produto e on (e.id_produto = f.id_produto)
     where f.id_usuario = ?`;
@@ -46,7 +46,7 @@ async function ListarById(id_usuario) {
     from usuario    
     where id_usuario = ?`;
 
-    const usuario = await execute(sql, [id_usuario]);
+    const usuario = await execute(sql, id_usuario);
 
     if (usuario.length == 0)
         return [];

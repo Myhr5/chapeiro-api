@@ -2,7 +2,7 @@ import serviceUsuario from "../services/service.usuario.js";
 
 async function Favoritos(req, res) {
     try {
-        const id_usuario = req.id_usuario;
+        const id_usuario = req.params.id_usuario;
         const favoritos = await serviceUsuario.Favoritos(id_usuario);
 
         res.status(200).json(favoritos);
@@ -39,7 +39,7 @@ async function Inserir(req, res) {
 
 async function Perfil(req, res) {
     try {
-        const id_usuario = req.id_usuario;
+        const id_usuario = req.params.id_usuario;
         const usuario = await serviceUsuario.Perfil(id_usuario);
 
         res.status(200).json(usuario);

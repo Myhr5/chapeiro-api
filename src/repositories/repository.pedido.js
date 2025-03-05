@@ -1,24 +1,21 @@
 import { execute } from "../database/sqlite.js";
 
-async function Listar() {
+async function Listar(id_usuario) {
 
-    const sql = `select p.*, e.nome, e.icone, s.descricao as descricao_status, s.cor
-    from pedido p
-    join empresa e on (e.id_empresa = p.id_empresa)
-    join pedido_status s on (s.status = p.status)
+    const sql = `select p.* from pedido p
+    where p.id_usuario = ?
     order by p.id_pedido desc`;
 
-    const pedidos = await execute(sql, []);
+    const pedidos = await execute(sql, id_usuario);
 
     return pedidos;
 }
 
-async function ListarId(id_pedido) {
+async function ListarId(id_usuario, id_pedido) {
 
-    const sql = `select p.*, e.nome, e.icone
+    const sql = `select p.*
     from pedido p
-    join empresa e on (e.id_empresa = p.id_empresa)
-    where p.id_pedido = ?
+    where p.id_pedido = ? and p.id_usuario = ?
     order by p.id_pedido desc`;
 
     const sqlItens = `select i.*, p.nome, p.descricao, p.icone
@@ -27,8 +24,8 @@ async function ListarId(id_pedido) {
     where i.id_pedido = ?
     order by i.id_item`;
 
-    const pedido = await execute(sql, [id_pedido]);
-    const itens = await execute(sqlItens, [id_pedido]);
+    const pedido = await execute(sql, [id_usuario, id_pedido]);
+    const itens = await execute(sqlItens, id_pedido);
 
     pedido[0].itens = itens;
 
@@ -42,10 +39,10 @@ async function Inserir(id_usuario, dados) {
         vl_taxa_entrega, vl_total, dt_pedido, status) values(?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'P')
         returning id_pedido`;
 
-    const pedido = await execute(sql, [id_usuario, 1, dados.vl_subtotal,
+    const pedido = await execute(sql, [id_usuario, dados.id_empresa, dados.vl_subtotal,
         dados.vl_taxa_entrega, dados.vl_total]);
 
-    const id_pedido = pedido[0].id_pedido;
+    const id_pedido = pedido[0].ID_PEDIDO;
 
     // Dados dos itens
     dados.itens.map(async (item) => {

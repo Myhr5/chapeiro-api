@@ -24,10 +24,9 @@ async function ExcluirFavorito(id_usuario, id_produto) {
 
 async function Cardapio() {
 
-    sql = `select * from produto order by id_produto`;
+    const sql = "select * from produto order by id_produto";
 
     const produtos = await execute(sql, []);
-    console.log(produtos)
 
     return produtos;
 }

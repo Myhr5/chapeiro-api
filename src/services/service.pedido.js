@@ -1,15 +1,15 @@
 import repositoryPedido from "../repositories/repository.pedido.js";
 
-async function Listar() {
+async function Listar(id_usuario) {
 
-    const pedidos = await repositoryPedido.Listar();
+    const pedidos = await repositoryPedido.Listar(id_usuario);
 
     return pedidos;
 }
 
-async function ListarId(id_pedido) {
+async function ListarId(id_usuario, id_pedido) {
 
-    const pedido = await repositoryPedido.ListarId(id_pedido);
+    const pedido = await repositoryPedido.ListarId(id_usuario, id_pedido);
 
     return pedido;
 }
