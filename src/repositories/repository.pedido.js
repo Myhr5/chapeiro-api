@@ -42,7 +42,7 @@ async function Inserir(id_usuario, dados) {
     const pedido = await execute(sql, [id_usuario, dados.id_empresa, dados.vl_subtotal,
         dados.vl_taxa_entrega, dados.vl_total]);
 
-    const id_pedido = pedido[0].ID_PEDIDO;
+    const id_pedido = pedido[0].id_pedido;
 
     // Dados dos itens
     dados.itens.map(async (item) => {

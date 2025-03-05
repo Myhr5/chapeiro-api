@@ -42,9 +42,9 @@ async function Login(email, senha) {
         return [];
     else {
 
-        if (await bcrypt.compare(senha, usuario.SENHA)) {
+        if (await bcrypt.compare(senha, usuario.senha)) {
             delete usuario.senha;
-            usuario.TOKEN = jwt.CreateJWT(usuario.id_usuario);
+            usuario.token = jwt.CreateJWT(usuario.id_usuario);
 
             return usuario;
         }
