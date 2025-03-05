@@ -1,5 +1,6 @@
 import { Router } from "express";
 import controllerEmpresa from "./controllers/controller.empresa.js";
+import controllerCategoria from "./controllers/controller.categoria.js";
 import controllerPedido from "./controllers/controller.pedido.js";
 import controllerUsuario from "./controllers/controller.usuario.js";
 import jwt from "./token.js";
