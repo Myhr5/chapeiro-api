@@ -14,16 +14,17 @@ async function ExcluirFavorito(id_usuario, id_produto) {
     return produtos;
 }
 
-async function Cardapio(id_usuario) {
+async function Cardapio() {
 
-    const card = await repositoryEmpresa.Cardapio(id_usuario);
+    const produtos = await repositoryEmpresa.Cardapio();
+    console.log(produtos)
 
-    return card;
+    return produtos;
 }
 
-async function ListarProdutoId(id_empresa, id_produto) {
+async function ListarProdutoId(id_produto) {
 
-    const produto = await repositoryEmpresa.ListarProdutoId(id_empresa, id_produto);
+    const produto = await repositoryEmpresa.ListarProdutoId(id_produto);
 
     return produto;
 }

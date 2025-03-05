@@ -2,7 +2,7 @@ import serviceEmpresa from "../services/service.empresa.js";
 
 async function InserirFavorito(req, res) {
     try {
-        const id_usuario = req.id_usuario;
+        const id_usuario = req.params.id_usuario;
         const id_produto = req.params.id_produto;
         const produtos = await serviceEmpresa.InserirFavorito(id_usuario, id_produto);
 
@@ -14,7 +14,7 @@ async function InserirFavorito(req, res) {
 
 async function ExcluirFavorito(req, res) {
     try {
-        const id_usuario = req.id_usuario;
+        const id_usuario = req.params.id_usuario;
         const id_produto = req.params.id_produto;
         const produtos = await serviceEmpresa.ExcluirFavorito(id_usuario, id_produto);
 
@@ -26,9 +26,8 @@ async function ExcluirFavorito(req, res) {
 
 async function Cardapio(req, res) {
     try {
-        const id_usuario = req.id_usuario;
-        const produtos = await serviceEmpresa.Cardapio(id_usuario);
-
+        const produtos = await serviceEmpresa.Cardapio();
+        console.log(produtos)
         res.status(200).json(produtos);
     } catch (error) {
         res.status(500).json({ error });
@@ -38,7 +37,7 @@ async function Cardapio(req, res) {
 async function ListarProdutoId(req, res) {
     try {
         const id_produto = req.params.id_produto;
-        const produto = await serviceEmpresa.ListarProdutoId(1, id_produto);
+        const produto = await serviceEmpresa.ListarProdutoId(id_produto);
 
         res.status(200).json(produto);
     } catch (error) {

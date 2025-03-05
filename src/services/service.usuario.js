@@ -41,14 +41,10 @@ async function Login(email, senha) {
     if (usuario.length == 0)
         return [];
     else {
-        if (senha == null || senha == undefined || usuario.SENHA == null || usuario.SENHA == undefined) {
-            console.log(usuario.SENHA)
-            return [];
-        }
 
         if (await bcrypt.compare(senha, usuario.SENHA)) {
             delete usuario.senha;
-            usuario.token = jwt.CreateJWT(usuario.id_usuario);
+            usuario.TOKEN = jwt.CreateJWT(usuario.id_usuario);
 
             return usuario;
         }
