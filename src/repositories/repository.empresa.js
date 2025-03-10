@@ -24,11 +24,37 @@ async function ExcluirFavorito(id_usuario, id_produto) {
 
 async function Cardapio() {
 
-    const sql = "select * from produto order by id_produto";
+    const test = ` select * from empresa e
+    where e.id_empresa = ?`
 
-    const produtos = await execute(sql, []);
+    const empresa = await execute(test, 1);
+    let retorno = empresa[0];
 
-    return produtos;
+    retorno.categorias = [];
+
+
+    const sql = `select distinct c.id_categoria, c.categoria
+    from produto p
+    join categoria c on (c.id_categoria = p.id_categoria)
+    order by c.ordem, p.nome`;
+
+    const categorias_unicas = await execute(sql, []);
+
+    for (const cat of categorias_unicas) {
+        const sql = `select p.*, c.categoria
+        from produto p
+        join categoria c on (c.id_categoria = p.id_categoria)
+        and p.id_categoria = ?
+        order by c.ordem, p.nome`;
+
+        const itens = await execute(sql, cat.id_categoria);
+
+        cat.itens = itens;
+
+        retorno.categorias.push(cat);
+    }
+
+    return retorno;
 }
 
 async function Buscar(id_usuario, busca, id_categoria) {
