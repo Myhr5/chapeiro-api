@@ -13,7 +13,7 @@ router.delete("/empresas/:id_usuario/:id_produto/favoritos", jwt.ValidateJWT, co
 router.get("/categorias", jwt.ValidateJWT, controllerCategoria.Listar);
 router.get("/empresas/cardapio", jwt.ValidateJWT, controllerEmpresa.Cardapio);
 router.get("/empresas/:id_usuario", jwt.ValidateJWT, controllerEmpresa.Buscar);
-router.get("/empresas/produtos/:id_produto", jwt.ValidateJWT, controllerEmpresa.ListarProdutoId);
+router.get("/empresas/:id_usuario/produtos/:id_produto", jwt.ValidateJWT, controllerEmpresa.ListarProdutoId);
 
 
 // Pedidos

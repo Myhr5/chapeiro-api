@@ -83,13 +83,14 @@ async function Buscar(id_usuario, busca, id_categoria) {
     return produtos;
 }
 
-async function ListarProdutoId(id_produto) {
+async function ListarProdutoId(id_produto, id_usuario) {
 
-    let sql = `select *
-    from  produto 
-    where id_produto = ?`;
+    let sql = `select case when u.id_favorito is null then 'N' else 'S' end as favorito, e.*
+    from  produto e
+    left join usuario_favorito u on (u.id_produto = e.id_produto and u.id_usuario = ?)
+    where e.id_produto = ?`;
 
-    const produto = await execute(sql, id_produto);
+    const produto = await execute(sql, [id_usuario, id_produto]);
 
     return produto[0];
 }

@@ -48,8 +48,9 @@ async function Buscar(req, res) {
 
 async function ListarProdutoId(req, res) {
     try {
+        const id_usuario = req.params.id_usuario;       
         const id_produto = req.params.id_produto;
-        const produto = await serviceEmpresa.ListarProdutoId(id_produto);
+        const produto = await serviceEmpresa.ListarProdutoId(id_produto, id_usuario);
 
         res.status(200).json(produto);
     } catch (error) {

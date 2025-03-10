@@ -28,9 +28,9 @@ async function Buscar(id_usuario, busca, id_categoria) {
     return produtos;
 }
 
-async function ListarProdutoId(id_produto) {
+async function ListarProdutoId(id_produto, id_usuario) {
 
-    const produto = await repositoryEmpresa.ListarProdutoId(id_produto);
+    const produto = await repositoryEmpresa.ListarProdutoId(id_produto, id_usuario);
 
     return produto;
 }
